@@ -1,5 +1,6 @@
--- Estrutura da tabela "sindico"
 
+
+-- Estrutura da tabela "sindico"
 DROP TABLE IF EXISTS `sindico`;
 CREATE TABLE `sindico` (
   `id` int(11) NOT NULL,
@@ -15,7 +16,101 @@ CREATE TABLE `sindico` (
 --
 INSERT INTO `sindico` (`id`, `nome_completo`, `resumo`, `classificacao`, `cidade_id`) VALUES
 (1, 'Manoela Silva', 'sindica profissional a 10 anos', 4.5, 20),
-(2, 'Tiago Fernandes', 'sindico profissional a 1 anos', 4.5, 20);
+(2, 'Tiago Fernandes', 'sindico profissional a 1 anos', 4.5, 21);
+
+-- Estrutura da tabela "historico_profissional"
+DROP TABLE IF EXISTS `historico_profissional`;
+CREATE TABLE `historico_profissional` (
+  `id` int(11) NOT NULL,
+  `condominio` varchar(255) DEFAULT NULL,
+  `duracao` varchar(255) DEFAULT NULL,
+  `sindico_id` int(2) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='historico- profissional';
+
+--
+-- Inserindo dados na tabela "historico_profissional"
+
+--
+INSERT INTO `historico_profissional` (`id`, `condominio`, `duracao`,  `sindico_id`) VALUES
+(1, 'Síndica Profissional no Reserva Inglesa','(2020-Atual)', 3),
+(2, 'Síndica Profissional no Reserva das Praias','(2021-Atual)', 3),
+(3, 'Síndica Profissional no Morada Tranquila','(2017-2020)', 3);
+
+
+
+-- Estrutura da tabela "historico_educacao"
+DROP TABLE IF EXISTS `historico_educacao`;
+CREATE TABLE `historico_educacao` (
+  `id` int(11) NOT NULL,
+  `curso` varchar(255) DEFAULT NULL,
+  `instituicao` varchar(255) DEFAULT NULL,
+  `duracao` varchar(255) DEFAULT NULL,
+  `sindico_id` int(2) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='historico-educacao';
+
+--
+-- Inserindo dados na tabela "historico_educacao"
+
+--
+INSERT INTO `historico_educacao` (`id`, `curso`, `instituicao`,`duracao`,  `sindico_id`) VALUES
+(1, 'Graduação em Gestão de Pessoas e Processos ','UFAM','(2010-2013)', 3),
+(2, 'Curso de formação de Síndico Profissisonal','UNI-SECOVI','(2017-2020)', 3),
+(3, 'MBA em Gestão de Recursos','UNIP','(2014-2016)', 3);
+
+-- Estrutura da tabela "contatos"
+DROP TABLE IF EXISTS `contatos`;
+CREATE TABLE `contatos` (
+  `id` int(11) NOT NULL,
+  `linkedin` varchar(255) DEFAULT NULL,
+  `instagram` varchar(255) DEFAULT NULL,
+  `gmail` varchar(255) DEFAULT NULL,
+  `telefone` varchar(255) DEFAULT NULL,
+  `sindico_id` int(2) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='contatos';
+
+--
+-- Inserindo dados na tabela "contatos"
+
+--
+INSERT INTO `contatos` (`id`, `linkedin`, `instagram`,`gmail`, `telefone`, `sindico_id`) VALUES
+(1, 'https://www.linkedin.com/mariaLisna-2621b4164/ ','@MariaLisna24','MariaLisna23@gmail.com','(92)991491768', 3);
+
+
+-- Estrutura da tabela "avaliacao"
+DROP TABLE IF EXISTS `avaliacao`;
+CREATE TABLE `avaliacao` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `comentario` varchar(255) DEFAULT NULL,
+  `classificacao` double DEFAULT NULL,
+  `sindico_id` int(2) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='avaliacao';
+
+--
+-- Inserindo dados na tabela "avaliacao"
+
+--
+INSERT INTO `avaliacao` (`id`, `titulo`, `comentario`,`classificacao`, `sindico_id`) VALUES
+(1, 'Uma pessoa tranquila ','“Uma pessoa calma e que sabe colocar as coisas em ordem”',5.0, 3),
+(1, 'Sob pressão ','“Uma pessoa que trabalha bem sob pressão, realizou diversos projetos sucedidos no cond”',5.0, 3);
+
+
+
+
+-- Estrutura da tabela "processo_juridico"
+DROP TABLE IF EXISTS `processo_juridico`;
+CREATE TABLE `processo_juridico` (
+  `id` int(11) NOT NULL,
+  `comentario` varchar(255) DEFAULT NULL,
+   `sindico_id` int(2) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='processos';
+
+--
+-- Inserindo dados na tabela "processo_juridico"
+
+--
+INSERT INTO `processo_juridico` (`id`, `comentario`,  `sindico_id`) VALUES
+(1, 'sem nenhum processo juridico', 3);
 
 
 -- Estrutura da tabela "estado"

@@ -2,6 +2,7 @@ package com.fiap.conde.controller;
 
 import com.fiap.conde.model.Cidade;
 import com.fiap.conde.model.Estado;
+import com.fiap.conde.model.ProcessoJuridico;
 import com.fiap.conde.model.Sindico;
 import com.fiap.conde.service.LocalidadeService;
 import com.fiap.conde.service.SindicoService;
@@ -23,23 +24,16 @@ public class SindicoController {
         return ResponseEntity.ok(sindico);
     }
 
-    @GetMapping("todos")
-    public ResponseEntity<?> findAllSindicos() {
-        List<Sindico> sindicos = sindicoService.findAllSindicos();
+    @GetMapping()
+    public ResponseEntity<?> findAllSindicos(@RequestParam(required = false) String nome,
+                                             @RequestParam(required = false) String cidade) {
+        List<Sindico> sindicos = sindicoService.findSindico(cidade, nome);
         return ResponseEntity.ok(sindicos);
     }
 
-    @GetMapping("todos-por-cidade")
-    public ResponseEntity<?> findAllSindicosPorCidade(@RequestParam String cidade) {
-        List<Sindico> sindicos = sindicoService.findSindicosPorCidade(cidade);
-        return ResponseEntity.ok(sindicos);
+    @GetMapping("{id}/processos-juridicos")
+    public ResponseEntity<?> buscarProcessosJuridicosSindico(@PathVariable(name = "id") Long sindicoId){
+        List<ProcessoJuridico> processoJuridicos = sindicoService.findAllProcessoPorSindico(sindicoId);
+        return ResponseEntity.ok(processoJuridicos);
     }
-
-    @GetMapping("buscar")
-    public ResponseEntity<?> buscarPorNome(@RequestParam String nome){
-        List<Sindico> sindicos = sindicoService.findSindicoPorNome(nome);
-        return ResponseEntity.ok(sindicos);
-    }
-
-
 }

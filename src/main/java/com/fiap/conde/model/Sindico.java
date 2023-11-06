@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "sindico")
 @Getter
@@ -19,7 +21,26 @@ public class Sindico {
 
     @ManyToOne
     @JoinColumn(name="cidade_id")
-    @JsonIgnore
     private Cidade cidade;
+
+    @OneToMany(mappedBy = "sindico")
+    @JsonIgnore
+    private List<ProcessoJuridico> processo;
+
+    @OneToMany(mappedBy = "sindico")
+    @JsonIgnore
+    private List<HistoricoProfissional> profissional;
+
+    @OneToMany(mappedBy = "sindico")
+    @JsonIgnore
+    private List<HistoricoEducacao> educacao;
+
+    @OneToOne(mappedBy = "sindico")
+    @JsonIgnore
+    private Contatos contatos;
+
+    @OneToOne(mappedBy = "sindico")
+    @JsonIgnore
+    private  Avaliacao avaliacao;
 
 }
