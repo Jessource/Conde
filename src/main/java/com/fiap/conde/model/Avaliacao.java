@@ -11,13 +11,13 @@ import lombok.Setter;
 @Setter
 public class Avaliacao {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
 
     private String comentario;
 
-    private double classiicacao;
+    private double classificacao;
 
     @ManyToOne
     @JoinColumn(name="sindico_id")

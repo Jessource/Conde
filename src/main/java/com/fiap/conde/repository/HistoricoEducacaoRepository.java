@@ -1,7 +1,7 @@
 package com.fiap.conde.repository;
 
 import com.fiap.conde.model.HistoricoEducacao;
-import com.fiap.conde.model.HistoricoProfissional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
