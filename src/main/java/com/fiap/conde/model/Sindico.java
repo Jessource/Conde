@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 public class Sindico {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nomeCompleto;
     private String resumo;
@@ -39,8 +39,8 @@ public class Sindico {
     @JsonIgnore
     private Contatos contatos;
 
-    @OneToOne(mappedBy = "sindico")
+    @OneToMany(mappedBy = "sindico")
     @JsonIgnore
-    private  Avaliacao avaliacao;
+    private List<Avaliacao> avaliacao;
 
 }

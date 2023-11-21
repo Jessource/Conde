@@ -1,36 +1,21 @@
 package com.fiap.conde.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Table(name = "avaliacao")
 @Getter
 @Setter
-public class Avaliacao {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class AvaliacaoDTO {
     private String titulo;
-
     private String comentario;
-
     private double classificacao;
+    private Long sindico_id;
 
-    @ManyToOne
-    @JoinColumn(name="sindico_id")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Sindico sindico;
-
-    public Long getId() {
-        return id;
+    public Long getSindico_id() {
+        return sindico_id;
     }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setSindico_id(Long sindico_id) {
+        this.sindico_id = sindico_id;
     }
 
     public String getTitulo() {
@@ -55,13 +40,5 @@ public class Avaliacao {
 
     public void setClassificacao(double classificacao) {
         this.classificacao = classificacao;
-    }
-
-    public Sindico getSindico() {
-        return sindico;
-    }
-
-    public void setSindico(Sindico sindico) {
-        this.sindico = sindico;
     }
 }

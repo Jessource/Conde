@@ -1,119 +1,126 @@
 -- Estrutura da tabela "sindico"
-DROP TABLE IF EXISTS `sindico`;
-CREATE TABLE `sindico` (
-  `id` int(11) NOT NULL PRIMARY KEY,
-  `nome_completo` varchar(75) DEFAULT NULL,
-  `resumo` varchar(255) DEFAULT NULL,
-  `classificacao` double  DEFAULT NULL,
-   `cidade_id` int(2) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='sindicos';
+DROP TABLE IF EXISTS sindico;
+CREATE TABLE sindico (
+  id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  nome_completo varchar(75) DEFAULT NULL,
+  resumo varchar(255) DEFAULT NULL,
+  classificacao double  DEFAULT NULL,
+  cidade_id int
+);
+
 --
 -- Inserindo dados na tabela "sindico"
 --
-INSERT INTO `sindico` (`id`, `nome_completo`, `resumo`, `classificacao`, `cidade_id`) VALUES
-(1, 'Manoela Silva', 'sindica profissional a 10 anos', 4.5, 20),
-(2, 'Tiago Fernandes', 'sindico profissional a 1 anos', 4.5, 21);
+INSERT INTO sindico (nome_completo, resumo, classificacao, cidade_id) VALUES
+('Manoela Silva', 'sindica profissional a 10 anos', 4.5, 20),
+('Tiago Fernandes', 'sindico profissional a 1 anos', 4.8, 21),
+('Marcos Julio', 'sindico profissional a 3,5 anos', 4.2, 21);
 
 
 -- Estrutura da tabela "historico_profissional"
-DROP TABLE IF EXISTS `historico_profissional`;
-CREATE TABLE `historico_profissional` (
-  `id` int(11) NOT NULL PRIMARY KEY,
-  `condominio` varchar(255) DEFAULT NULL,
-  `duracao` varchar(255) DEFAULT NULL,
-  `sindico_id` int(2) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='historico- profissional';
+DROP TABLE IF EXISTS historico_profissional;
+CREATE TABLE historico_profissional (
+  id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  condominio varchar(255) DEFAULT NULL,
+  duracao varchar(255) DEFAULT NULL,
+  sindico_id int
+);
+
 --
 -- Inserindo dados na tabela "historico_profissional"
 --
-INSERT INTO `historico_profissional` (`id`, `condominio`, `duracao`,  `sindico_id`) VALUES
-(1, 'Síndica Profissional no Reserva Inglesa','(2020-Atual)', 3),
-(2, 'Síndica Profissional no Reserva das Praias','(2021-Atual)', 3),
-(3, 'Síndica Profissional no Morada Tranquila','(2017-2020)', 3);
+INSERT INTO historico_profissional (condominio, duracao,  sindico_id) VALUES
+('Síndica Profissional no Reserva Inglesa','(2020-Atual)', 3),
+('Síndica Profissional no Reserva das Praias','(2021-Atual)', 3),
+('Síndica Profissional no Morada Tranquila','(2017-2020)', 3);
 
 
 -- Estrutura da tabela "historico_educacao"
-DROP TABLE IF EXISTS `historico_educacao`;
-CREATE TABLE `historico_educacao` (
-  `id` int(11) NOT NULL PRIMARY KEY,
-  `curso` varchar(255) DEFAULT NULL,
-  `instituicao` varchar(255) DEFAULT NULL,
-  `duracao` varchar(255) DEFAULT NULL,
-  `sindico_id` int(2) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='historico-educacao';
+DROP TABLE IF EXISTS historico_educacao;
+CREATE TABLE historico_educacao (
+  id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  curso varchar(255) DEFAULT NULL,
+  instituicao varchar(255) DEFAULT NULL,
+  duracao varchar(255) DEFAULT NULL,
+  sindico_id int
+);
+
 --
 -- Inserindo dados na tabela "historico_educacao"
 --
-INSERT INTO `historico_educacao` (`id`, `curso`, `instituicao`,`duracao`,  `sindico_id`) VALUES
-(1, 'Graduação em Gestão de Pessoas e Processos ','UFAM','(2010-2013)', 3),
-(2, 'Curso de formação de Síndico Profissisonal','UNI-SECOVI','(2017-2020)', 3),
-(3, 'MBA em Gestão de Recursos','UNIP','(2014-2016)', 3);
+INSERT INTO historico_educacao (curso, instituicao,duracao,  sindico_id) VALUES
+('Graduação em Gestão de Pessoas e Processos ','UFAM','(2010-2013)', 3),
+('Curso de formação de Síndico Profissisonal','UNI-SECOVI','(2017-2020)', 3),
+('MBA em Gestão de Recursos','UNIP','(2014-2016)', 3);
 
 
 -- Estrutura da tabela "contatos"
-DROP TABLE IF EXISTS `contatos`;
-CREATE TABLE `contatos` (
-  `id` int(11) NOT NULL PRIMARY KEY,
-  `linkedin` varchar(255) DEFAULT NULL,
-  `instagram` varchar(255) DEFAULT NULL,
-  `gmail` varchar(255) DEFAULT NULL,
-  `telefone` varchar(255) DEFAULT NULL,
-  `sindico_id` int(2) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='contatos';
+DROP TABLE IF EXISTS contatos;
+CREATE TABLE contatos (
+  id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  linkedin varchar(255) DEFAULT NULL,
+  instagram varchar(255) DEFAULT NULL,
+  gmail varchar(255) DEFAULT NULL,
+  telefone varchar(255) DEFAULT NULL,
+  sindico_id int
+);
+
 --
 -- Inserindo dados na tabela "contatos"
 --
-INSERT INTO `contatos` (`id`, `linkedin`, `instagram`,`gmail`, `telefone`, `sindico_id`) VALUES
+INSERT INTO contatos (id, linkedin, instagram,gmail, telefone, sindico_id) VALUES
 (1, 'https://www.linkedin.com/mariaLisna-2621b4164/ ','@MariaLisna24','MariaLisna23@gmail.com','(92)991491768', 3);
 
 
 -- Estrutura da tabela "avaliacao"
-DROP TABLE IF EXISTS `avaliacao`;
-CREATE TABLE `avaliacao` (
-  `id` int(11) NOT NULL PRIMARY KEY,
-  `titulo` varchar(255) DEFAULT NULL,
-  `comentario` varchar(255) DEFAULT NULL,
-  `classificacao` double DEFAULT NULL,
-  `sindico_id` int(2) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='avaliacao';
+DROP TABLE IF EXISTS avaliacao;
+CREATE TABLE avaliacao (
+  id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  titulo varchar(255) DEFAULT NULL,
+  comentario varchar(255) DEFAULT NULL,
+  classificacao double DEFAULT NULL,
+  sindico_id int
+);
+
 --
 -- Inserindo dados na tabela "avaliacao"
 --
-INSERT INTO `avaliacao` (`id`, `titulo`, `comentario`,`classificacao`, `sindico_id`) VALUES
-(1, 'Uma pessoa tranquila ','“Uma pessoa calma e que sabe colocar as coisas em ordem”',5.0, 3),
-(2, 'Sob pressão ','“Uma pessoa que trabalha bem sob pressão, realizou diversos projetos sucedidos no cond”',4.5, 3),
-(3, 'Uma pessoa tranquila ','“Uma pessoa calma e que sabe colocar as coisas em ordem”',3.8, 3),
-(4, 'Sob pressão ','“Uma pessoa que trabalha bem sob pressão, realizou diversos projetos sucedidos no cond”',4.3, 3);
+INSERT INTO avaliacao (titulo, comentario,classificacao, sindico_id) VALUES
+('Uma pessoa tranquila ','“Uma pessoa calma e que sabe colocar as coisas em ordem”',5.0, 3),
+('Sob pressão ','“Uma pessoa que trabalha bem sob pressão, realizou diversos projetos sucedidos no cond”',4.5, 3),
+('Uma pessoa tranquila ','“Uma pessoa calma e que sabe colocar as coisas em ordem”',3.8, 3),
+('Sob pressão ','“Uma pessoa que trabalha bem sob pressão, realizou diversos projetos sucedidos no cond”',4.3, 3);
 
 
 -- Estrutura da tabela "processo_juridico"
-DROP TABLE IF EXISTS `processo_juridico`;
-CREATE TABLE `processo_juridico` (
-  `id` int(11) NOT NULL,
-  `comentario` varchar(255) DEFAULT NULL,
-   `sindico_id` int(2) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='processos';
+DROP TABLE IF EXISTS processo_juridico;
+CREATE TABLE processo_juridico (
+  id int NOT NULL AUTO_INCREMENT,
+  comentario varchar(255) DEFAULT NULL,
+  sindico_id int
+);
+
 --
 -- Inserindo dados na tabela "processo_juridico"
 --
-INSERT INTO `processo_juridico` (`id`, `comentario`,  `sindico_id`) VALUES
-(1, 'sem nenhum processo juridico', 3);
+INSERT INTO processo_juridico (comentario,  sindico_id) VALUES
+('sem nenhum processo juridico', 3);
 
 
 -- Estrutura da tabela "estado"
 --
-DROP TABLE IF EXISTS `estado`;
-CREATE TABLE `estado` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(75) DEFAULT NULL,
-  `uf` varchar(2) DEFAULT NULL,
-  `ibge` int(2) DEFAULT NULL,
-  `ddd` varchar(50) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Unidades Federativas';
+DROP TABLE IF EXISTS estado;
+CREATE TABLE estado (
+  id int NOT NULL,
+  nome varchar(75) DEFAULT NULL,
+  uf varchar(2) DEFAULT NULL,
+  ibge int DEFAULT NULL,
+  ddd varchar(50) DEFAULT NULL
+);
 --
 -- Inserindo dados na tabela "estado"
 --
-INSERT INTO `estado` (`id`, `nome`, `uf`, `ibge`, `ddd`) VALUES
+INSERT INTO estado (id, nome, uf, ibge, ddd) VALUES
 (1, 'Acre', 'AC', 12, '68'),
 (2, 'Alagoas', 'AL', 27, '82'),
 (3, 'Amazonas', 'AM', 13, '97,92'),
@@ -144,23 +151,23 @@ INSERT INTO `estado` (`id`, `nome`, `uf`, `ibge`, `ddd`) VALUES
 --
 -- Indexes for table "estado"
 --
-ALTER TABLE `estado`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE estado
+  ADD PRIMARY KEY (id);
 
 --
 -- Estrutura da tabela "cidade"
 --
-DROP TABLE IF EXISTS `cidade`;
-CREATE TABLE `cidade` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(120) DEFAULT NULL,
-  `uf` int(2) DEFAULT NULL,
-  `ibge` int(7) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Municipios das Unidades Federativas';
+DROP TABLE IF EXISTS cidade;
+CREATE TABLE cidade (
+  id int NOT NULL,
+  nome varchar(120) DEFAULT NULL,
+  uf int DEFAULT NULL,
+  ibge int DEFAULT NULL
+);
 --
 -- Inserindo dados na tabela "cidade"
 --
-INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
+INSERT INTO cidade (id, nome, uf, ibge) VALUES
 (1, 'Afonso Cláudio', 8, 3200102),
 (2, 'Água Doce do Norte', 8, 3200169),
 (3, 'Águia Branca', 8, 3200136),
@@ -321,9 +328,9 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (158, 'Monteirópolis', 2, 2705408),
 (159, 'Murici', 2, 2705507),
 (160, 'Novo Lino', 2, 2705606),
-(161, 'Olho d`Água das Flores', 2, 2705705),
-(162, 'Olho d`Água do Casado', 2, 2705804),
-(163, 'Olho d`Água Grande', 2, 2705903),
+(161, 'Olho dÁgua das Flores', 2, 2705705),
+(162, 'Olho dÁgua do Casado', 2, 2705804),
+(163, 'Olho dÁgua Grande', 2, 2705903),
 (164, 'Olivença', 2, 2706000),
 (165, 'Ouro Branco', 2, 2706109),
 (166, 'Palestina', 2, 2706208),
@@ -357,7 +364,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (194, 'São Sebastião', 2, 2708808),
 (195, 'Satuba', 2, 2708907),
 (196, 'Senador Rui Palmeira', 2, 2708956),
-(197, 'Tanque d`Arca', 2, 2709004),
+(197, 'Tanque dArca', 2, 2709004),
 (198, 'Taquarana', 2, 2709103),
 (199, 'Teotônio Vilela', 2, 2709152),
 (200, 'Traipu', 2, 2709202),
@@ -559,7 +566,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (396, 'Cruz das Almas', 5, 2909802),
 (397, 'Curaçá', 5, 2909901),
 (398, 'Dário Meira', 5, 2910008),
-(399, 'Dias d`Ávila', 5, 2910057),
+(399, 'Dias dÁvila', 5, 2910057),
 (400, 'Dom Basílio', 5, 2910107),
 (401, 'Dom Macedo Costa', 5, 2910206),
 (402, 'Elísio Medrado', 5, 2910305),
@@ -1258,7 +1265,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (1095, 'Santo Antônio do Descoberto', 9, 5219753),
 (1096, 'São Domingos', 9, 5219803),
 (1097, 'São Francisco de Goiás', 9, 5219902),
-(1098, 'São João d`Aliança', 9, 5220009),
+(1098, 'São João dAliança', 9, 5220009),
 (1099, 'São João da Paraúna', 9, 5220058),
 (1100, 'São Luís de Montes Belos', 9, 5220108),
 (1101, 'São Luíz do Norte', 9, 5220157),
@@ -1270,7 +1277,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (1107, 'Serranópolis', 9, 5220504),
 (1108, 'Silvânia', 9, 5220603),
 (1109, 'Simolândia', 9, 5220686),
-(1110, 'Sítio d`Abadia', 9, 5220702),
+(1110, 'Sítio dAbadia', 9, 5220702),
 (1111, 'Taquaral de Goiás', 9, 5221007),
 (1112, 'Teresina de Goiás', 9, 5221080),
 (1113, 'Terezópolis de Goiás', 9, 5221197),
@@ -1416,7 +1423,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (1253, 'Nova Colinas', 10, 2107258),
 (1254, 'Nova Iorque', 10, 2107308),
 (1255, 'Nova Olinda do Maranhão', 10, 2107357),
-(1256, 'Olho d`Água das Cunhãs', 10, 2107407),
+(1256, 'Olho dÁgua das Cunhãs', 10, 2107407),
 (1257, 'Olinda Nova do Maranhão', 10, 2107456),
 (1258, 'Paço do Lumiar', 10, 2107506),
 (1259, 'Palmeirândia', 10, 2107605),
@@ -1541,7 +1548,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (1378, 'Colniza', 13, 5103254),
 (1379, 'Comodoro', 13, 5103304),
 (1380, 'Confresa', 13, 5103353),
-(1381, 'Conquista d`Oeste', 13, 5103361),
+(1381, 'Conquista dOeste', 13, 5103361),
 (1382, 'Cotriguaçu', 13, 5103379),
 (1383, 'Cuiabá', 13, 5103403),
 (1384, 'Curvelândia', 13, 5103437),
@@ -1549,10 +1556,10 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (1387, 'Diamantino', 13, 5103502),
 (1388, 'Dom Aquino', 13, 5103601),
 (1389, 'Feliz Natal', 13, 5103700),
-(1390, 'Figueirópolis d`Oeste', 13, 5103809),
+(1390, 'Figueirópolis dOeste', 13, 5103809),
 (1391, 'Gaúcha do Norte', 13, 5103858),
 (1392, 'General Carneiro', 13, 5103908),
-(1393, 'Glória d`Oeste', 13, 5103957),
+(1393, 'Glória dOeste', 13, 5103957),
 (1394, 'Guarantã do Norte', 13, 5104104),
 (1395, 'Guiratinga', 13, 5104203),
 (1396, 'Indiavaí', 13, 5104500),
@@ -1567,12 +1574,12 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (1405, 'Juína', 13, 5105150),
 (1406, 'Juruena', 13, 5105176),
 (1407, 'Juscimeira', 13, 5105200),
-(1408, 'Lambari d`Oeste', 13, 5105234),
+(1408, 'Lambari dOeste', 13, 5105234),
 (1409, 'Lucas do Rio Verde', 13, 5105259),
 (1410, 'Luciára', 13, 5105309),
 (1411, 'Marcelândia', 13, 5105580),
 (1412, 'Matupá', 13, 5105606),
-(1413, 'Mirassol d`Oeste', 13, 5105622),
+(1413, 'Mirassol dOeste', 13, 5105622),
 (1414, 'Nobres', 13, 5105903),
 (1415, 'Nortelândia', 13, 5106000),
 (1416, 'Nossa Senhora do Livramento', 13, 5106109),
@@ -1678,7 +1685,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (1517, 'Douradina', 12, 5003504),
 (1518, 'Dourados', 12, 5003702),
 (1519, 'Eldorado', 12, 5003751);
-INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
+INSERT INTO cidade (id, nome, uf, ibge) VALUES
 (1520, 'Fátima do Sul', 12, 5003801),
 (1521, 'Figueirão', 12, 5003900),
 (1522, 'Glória de Dourados', 12, 5004007),
@@ -2253,7 +2260,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (2092, 'Novo Oriente de Minas', 11, 3145356),
 (2093, 'Novorizonte', 11, 3145372),
 (2094, 'Olaria', 11, 3145406),
-(2095, 'Olhos-d`Água', 11, 3145455),
+(2095, 'Olhos-dÁgua', 11, 3145455),
 (2096, 'Olímpio Noronha', 11, 3145505),
 (2097, 'Oliveira', 11, 3145604),
 (2098, 'Oliveira Fortes', 11, 3145703),
@@ -2314,7 +2321,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (2153, 'Piedade do Rio Grande', 11, 3150307),
 (2154, 'Piedade dos Gerais', 11, 3150406),
 (2155, 'Pimenta', 11, 3150505),
-(2156, 'Pingo-d`Água', 11, 3150539),
+(2156, 'Pingo-dÁgua', 11, 3150539),
 (2157, 'Pintópolis', 11, 3150570),
 (2158, 'Piracema', 11, 3150604),
 (2159, 'Pirajuba', 11, 3150703),
@@ -2665,7 +2672,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (2504, 'Palestina do Pará', 14, 1505494),
 (2505, 'Paragominas', 14, 1505502),
 (2506, 'Parauapebas', 14, 1505536),
-(2507, 'Pau d`Arco', 14, 1505551),
+(2507, 'Pau dArco', 14, 1505551),
 (2508, 'Peixe-Boi', 14, 1505601),
 (2509, 'Piçarra', 14, 1505635),
 (2510, 'Placas', 14, 1505650),
@@ -2826,7 +2833,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (2665, 'Livramento', 15, 2508505),
 (2666, 'Logradouro', 15, 2508554),
 (2667, 'Lucena', 15, 2508604),
-(2668, 'Mãe d`Água', 15, 2508703),
+(2668, 'Mãe dÁgua', 15, 2508703),
 (2669, 'Malta', 15, 2508802),
 (2670, 'Mamanguape', 15, 2508901),
 (2671, 'Manaíra', 15, 2509008),
@@ -2848,7 +2855,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (2687, 'Nova Floresta', 15, 2510105),
 (2688, 'Nova Olinda', 15, 2510204),
 (2689, 'Nova Palmeira', 15, 2510303),
-(2690, 'Olho d`Água', 15, 2510402),
+(2690, 'Olho dÁgua', 15, 2510402),
 (2691, 'Olivedos', 15, 2510501),
 (2692, 'Ouro Velho', 15, 2510600),
 (2693, 'Parari', 15, 2510659),
@@ -3038,7 +3045,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (2877, 'Cruzmaltina', 18, 4106852),
 (2878, 'Curitiba', 18, 4106902),
 (2879, 'Curiúva', 18, 4107009),
-(2880, 'Diamante d`Oeste', 18, 4107157),
+(2880, 'Diamante dOeste', 18, 4107157),
 (2881, 'Diamante do Norte', 18, 4107108),
 (2882, 'Diamante do Sul', 18, 4107124),
 (2883, 'Dois Vizinhos', 18, 4107207),
@@ -3102,7 +3109,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (2941, 'Itaipulândia', 18, 4110953),
 (2942, 'Itambaracá', 18, 4111001),
 (2943, 'Itambé', 18, 4111100),
-(2944, 'Itapejara d`Oeste', 18, 4111209),
+(2944, 'Itapejara dOeste', 18, 4111209),
 (2945, 'Itaperuçu', 18, 4111258),
 (2946, 'Itaúna do Sul', 18, 4111308),
 (2947, 'Ivaí', 18, 4111407),
@@ -3120,7 +3127,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (2959, 'Jardim Alegre', 18, 4112504),
 (2960, 'Jardim Olinda', 18, 4112603),
 (2961, 'Jataizinho', 18, 4112702);
-INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
+INSERT INTO cidade (id, nome, uf, ibge) VALUES
 (2962, 'Jesuítas', 18, 4112751),
 (2963, 'Joaquim Távora', 18, 4112801),
 (2964, 'Jundiaí do Sul', 18, 4112900),
@@ -3207,7 +3214,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (3045, 'Peabiru', 18, 4118808),
 (3046, 'Perobal', 18, 4118857),
 (3047, 'Pérola', 18, 4118907),
-(3048, 'Pérola d`Oeste', 18, 4119004),
+(3048, 'Pérola dOeste', 18, 4119004),
 (3049, 'Piên', 18, 4119103),
 (3050, 'Pinhais', 18, 4119152),
 (3051, 'Pinhal de São Bento', 18, 4119251),
@@ -3241,7 +3248,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (3079, 'Quitandinha', 18, 4121208),
 (3080, 'Ramilândia', 18, 4121257),
 (3081, 'Rancho Alegre', 18, 4121307),
-(3082, 'Rancho Alegre d`Oeste', 18, 4121356),
+(3082, 'Rancho Alegre dOeste', 18, 4121356),
 (3083, 'Realeza', 18, 4121406),
 (3084, 'Rebouças', 18, 4121505),
 (3085, 'Renascença', 18, 4121604),
@@ -3289,7 +3296,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (3127, 'São João do Caiuá', 18, 4124905),
 (3128, 'São João do Ivaí', 18, 4125001),
 (3129, 'São João do Triunfo', 18, 4125100),
-(3130, 'São Jorge d`Oeste', 18, 4125209),
+(3130, 'São Jorge dOeste', 18, 4125209),
 (3131, 'São Jorge do Ivaí', 18, 4125308),
 (3132, 'São Jorge do Patrocínio', 18, 4125357),
 (3133, 'São José da Boa Vista', 18, 4125407),
@@ -3545,7 +3552,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (3383, 'Assunção do Piauí', 17, 2201051),
 (3384, 'Avelino Lopes', 17, 2201101),
 (3385, 'Baixa Grande do Ribeiro', 17, 2201150),
-(3386, 'Barra d`Alcântara', 17, 2201176),
+(3386, 'Barra dAlcântara', 17, 2201176),
 (3387, 'Barras', 17, 2201200),
 (3388, 'Barreiras do Piauí', 17, 2201309),
 (3389, 'Barro Duro', 17, 2201408),
@@ -3669,7 +3676,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (3507, 'Novo Oriente do Piauí', 17, 2206902),
 (3508, 'Novo Santo Antônio', 17, 2206951),
 (3509, 'Oeiras', 17, 2207009),
-(3510, 'Olho d`Água do Piauí', 17, 2207108),
+(3510, 'Olho dÁgua do Piauí', 17, 2207108),
 (3511, 'Padre Marcos', 17, 2207207),
 (3512, 'Paes Landim', 17, 2207306),
 (3513, 'Pajeú do Piauí', 17, 2207355),
@@ -3680,7 +3687,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (3518, 'Parnaíba', 17, 2207702),
 (3519, 'Passagem Franca do Piauí', 17, 2207751),
 (3520, 'Patos do Piauí', 17, 2207777),
-(3521, 'Pau d`Arco do Piauí', 17, 2207793),
+(3521, 'Pau dArco do Piauí', 17, 2207793),
 (3522, 'Paulistana', 17, 2207801),
 (3523, 'Pavussu', 17, 2207850),
 (3524, 'Pedro II', 17, 2207900),
@@ -3908,7 +3915,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (3747, 'José da Penha', 20, 2406007),
 (3748, 'Jucurutu', 20, 2406106),
 (3749, 'Jundiá', 20, 2406155),
-(3750, 'Lagoa d`Anta', 20, 2406205),
+(3750, 'Lagoa dAnta', 20, 2406205),
 (3751, 'Lagoa de Pedras', 20, 2406304),
 (3752, 'Lagoa de Velhos', 20, 2406403),
 (3753, 'Lagoa Nova', 20, 2406502),
@@ -3931,7 +3938,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (3770, 'Natal', 20, 2408102),
 (3771, 'Nísia Floresta', 20, 2408201),
 (3772, 'Nova Cruz', 20, 2408300),
-(3773, 'Olho-d`Água do Borges', 20, 2408409),
+(3773, 'Olho-dÁgua do Borges', 20, 2408409),
 (3774, 'Ouro Branco', 20, 2408508),
 (3775, 'Paraná', 20, 2408607),
 (3776, 'Paraú', 20, 2408706),
@@ -4504,10 +4511,10 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (4343, 'Vitória das Missões', 23, 4323754),
 (4344, 'Westfália', 23, 4323770),
 (4345, 'Xangri-lá', 23, 4323804),
-(4346, 'Alta Floresta d`Oeste', 21, 1100015),
+(4346, 'Alta Floresta dOeste', 21, 1100015),
 (4347, 'Alto Alegre dos Parecis', 21, 1100379),
 (4348, 'Alto Paraíso', 21, 1100403),
-(4349, 'Alvorada d`Oeste', 21, 1100346),
+(4349, 'Alvorada dOeste', 21, 1100346),
 (4350, 'Ariquemes', 21, 1100023),
 (4351, 'Buritis', 21, 1100452),
 (4352, 'Cabixi', 21, 1100031),
@@ -4522,32 +4529,32 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (4361, 'Corumbiara', 21, 1100072),
 (4362, 'Costa Marques', 21, 1100080),
 (4363, 'Cujubim', 21, 1100940),
-(4364, 'Espigão d`Oeste', 21, 1100098),
+(4364, 'Espigão dOeste', 21, 1100098),
 (4365, 'Governador Jorge Teixeira', 21, 1101005),
 (4366, 'Guajará-Mirim', 21, 1100106),
 (4367, 'Itapuã do Oeste', 21, 1101104),
 (4368, 'Jaru', 21, 1100114),
 (4369, 'Ji-Paraná', 21, 1100122),
-(4370, 'Machadinho d`Oeste', 21, 1100130),
+(4370, 'Machadinho dOeste', 21, 1100130),
 (4371, 'Ministro Andreazza', 21, 1101203),
 (4372, 'Mirante da Serra', 21, 1101302),
 (4373, 'Monte Negro', 21, 1101401),
-(4374, 'Nova Brasilândia d`Oeste', 21, 1100148),
+(4374, 'Nova Brasilândia dOeste', 21, 1100148),
 (4375, 'Nova Mamoré', 21, 1100338),
 (4376, 'Nova União', 21, 1101435),
 (4377, 'Novo Horizonte do Oeste', 21, 1100502),
 (4378, 'Ouro Preto do Oeste', 21, 1100155),
 (4379, 'Parecis', 21, 1101450),
 (4380, 'Pimenta Bueno', 21, 1100189);
-INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
+INSERT INTO cidade (id, nome, uf, ibge) VALUES
 (4381, 'Pimenteiras do Oeste', 21, 1101468),
 (4382, 'Porto Velho', 21, 1100205),
 (4383, 'Presidente Médici', 21, 1100254),
 (4384, 'Primavera de Rondônia', 21, 1101476),
 (4385, 'Rio Crespo', 21, 1100262),
 (4386, 'Rolim de Moura', 21, 1100288),
-(4387, 'Santa Luzia d`Oeste', 21, 1100296),
-(4388, 'São Felipe d`Oeste', 21, 1101484),
+(4387, 'Santa Luzia dOeste', 21, 1100296),
+(4388, 'São Felipe dOeste', 21, 1101484),
 (4389, 'São Francisco do Guaporé', 21, 1101492),
 (4390, 'São Miguel do Guaporé', 21, 1100320),
 (4391, 'Seringueiras', 21, 1101500),
@@ -4676,7 +4683,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (4514, 'Guaramirim', 24, 4206504),
 (4515, 'Guarujá do Sul', 24, 4206603),
 (4516, 'Guatambú', 24, 4206652),
-(4517, 'Herval d`Oeste', 24, 4206702),
+(4517, 'Herval dOeste', 24, 4206702),
 (4518, 'Ibiam', 24, 4206751),
 (4519, 'Ibicaré', 24, 4206801),
 (4520, 'Ibirama', 24, 4206900),
@@ -4892,7 +4899,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (4731, 'Anhembi', 26, 3502309),
 (4732, 'Anhumas', 26, 3502408),
 (4733, 'Aparecida', 26, 3502507),
-(4734, 'Aparecida d`Oeste', 26, 3502606),
+(4734, 'Aparecida dOeste', 26, 3502606),
 (4735, 'Apiaí', 26, 3502705),
 (4736, 'Araçariguama', 26, 3502754),
 (4737, 'Araçatuba', 26, 3502804),
@@ -5039,7 +5046,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (4878, 'Espírito Santo do Pinhal', 26, 3515186),
 (4879, 'Espírito Santo do Turvo', 26, 3515194),
 (4880, 'Estiva Gerbi', 26, 3557303),
-(4881, 'Estrela d`Oeste', 26, 3515202),
+(4881, 'Estrela dOeste', 26, 3515202),
 (4882, 'Estrela do Norte', 26, 3515301),
 (4883, 'Euclides da Cunha Paulista', 26, 3515350),
 (4884, 'Fartura', 26, 3515400),
@@ -5070,7 +5077,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (4909, 'Guará', 26, 3517703),
 (4910, 'Guaraçaí', 26, 3517802),
 (4911, 'Guaraci', 26, 3517901),
-(4912, 'Guarani d`Oeste', 26, 3518008),
+(4912, 'Guarani dOeste', 26, 3518008),
 (4913, 'Guarantã', 26, 3518107),
 (4914, 'Guararapes', 26, 3518206),
 (4915, 'Guararema', 26, 3518305),
@@ -5262,7 +5269,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (5101, 'Pacaembu', 26, 3534906),
 (5102, 'Palestina', 26, 3535002),
 (5103, 'Palmares Paulista', 26, 3535101),
-(5104, 'Palmeira d`Oeste', 26, 3535200),
+(5104, 'Palmeira dOeste', 26, 3535200),
 (5105, 'Palmital', 26, 3535309),
 (5106, 'Panorama', 26, 3535408),
 (5107, 'Paraguaçu Paulista', 26, 3535507),
@@ -5379,9 +5386,9 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (5218, 'Sandovalina', 26, 3545506),
 (5219, 'Santa Adélia', 26, 3545605),
 (5220, 'Santa Albertina', 26, 3545704),
-(5221, 'Santa Bárbara d`Oeste', 26, 3545803),
+(5221, 'Santa Bárbara dOeste', 26, 3545803),
 (5222, 'Santa Branca', 26, 3546009),
-(5223, 'Santa Clara d`Oeste', 26, 3546108),
+(5223, 'Santa Clara dOeste', 26, 3546108),
 (5224, 'Santa Cruz da Conceição', 26, 3546207),
 (5225, 'Santa Cruz da Esperança', 26, 3546256),
 (5226, 'Santa Cruz das Palmeiras', 26, 3546306),
@@ -5393,7 +5400,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (5232, 'Santa Lúcia', 26, 3546900),
 (5233, 'Santa Maria da Serra', 26, 3547007),
 (5234, 'Santa Mercedes', 26, 3547106),
-(5235, 'Santa Rita d`Oeste', 26, 3547403),
+(5235, 'Santa Rita dOeste', 26, 3547403),
 (5236, 'Santa Rita do Passa Quatro', 26, 3547502),
 (5237, 'Santa Rosa de Viterbo', 26, 3547601),
 (5238, 'Santa Salete', 26, 3547650),
@@ -5417,7 +5424,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (5256, 'São João da Boa Vista', 26, 3549102),
 (5257, 'São João das Duas Pontes', 26, 3549201),
 (5258, 'São João de Iracema', 26, 3549250),
-(5259, 'São João do Pau d`Alho', 26, 3549300),
+(5259, 'São João do Pau dAlho', 26, 3549300),
 (5260, 'São Joaquim da Barra', 26, 3549409),
 (5261, 'São José da Bela Vista', 26, 3549508),
 (5262, 'São José do Barreiro', 26, 3549607),
@@ -5538,7 +5545,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (5377, 'Itabaiana', 25, 2802908),
 (5378, 'Itabaianinha', 25, 2803005),
 (5379, 'Itabi', 25, 2803104),
-(5380, 'Itaporanga d`Ajuda', 25, 2803203),
+(5380, 'Itaporanga dAjuda', 25, 2803203),
 (5381, 'Japaratuba', 25, 2803302),
 (5382, 'Japoatã', 25, 2803401),
 (5383, 'Lagarto', 25, 2803500),
@@ -5678,7 +5685,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 (5517, 'Palmeirópolis', 27, 1715754),
 (5518, 'Paraíso do Tocantins', 27, 1716109),
 (5519, 'Paranã', 27, 1716208),
-(5520, 'Pau d`Arco', 27, 1716307),
+(5520, 'Pau dArco', 27, 1716307),
 (5521, 'Pedro Afonso', 27, 1716505),
 (5522, 'Peixe', 27, 1716604),
 (5523, 'Pequizeiro', 27, 1716653),
@@ -5762,5 +5769,29 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
 --
 -- Indexes for table "cidade"
 --
-ALTER TABLE `cidade`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE cidade
+  ADD PRIMARY KEY (id);
+
+ALTER TABLE sindico
+    ADD FOREIGN KEY (cidade_id)
+    REFERENCES cidade(id);
+
+ALTER TABLE historico_profissional
+    ADD FOREIGN KEY (sindico_id)
+    REFERENCES sindico(id);
+
+ALTER TABLE historico_educacao
+    ADD FOREIGN KEY (sindico_id)
+    REFERENCES sindico(id);
+
+ALTER TABLE contatos
+    ADD FOREIGN KEY (sindico_id)
+    REFERENCES sindico(id);
+
+ALTER TABLE avaliacao
+    ADD FOREIGN KEY (sindico_id)
+    REFERENCES sindico(id);
+
+ALTER TABLE processo_juridico
+    ADD FOREIGN KEY (sindico_id)
+    REFERENCES sindico(id);

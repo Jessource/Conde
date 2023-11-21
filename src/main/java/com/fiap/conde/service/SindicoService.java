@@ -84,6 +84,15 @@ public class SindicoService {
         return avaliacaoRepository.mediaAvaliacaoSindico(sindicoId);
     }
     public Avaliacao saveFormAvaliacao(Avaliacao avaliacao){
+//        Optional<Sindico> sindico = sindicoRepository.findById(avaliacao.getSindico_id());
+//        if (sindico.isPresent()) {
+//            Avaliacao av = new Avaliacao();
+//            av.setSindico(sindico.get());
+//            av.setClassificacao(avaliacao.getClassificacao());
+//            av.setTitulo(avaliacao.getTitulo());
+//            av.setComentario(avaliacao.getComentario());
+//            return avaliacaoRepository.save(av);
+//        }
         return avaliacaoRepository.save(avaliacao);
     }
 
