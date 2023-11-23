@@ -32,69 +32,40 @@ public class SindicoService {
     @Autowired
     private AvaliacaoRepository avaliacaoRepository;
 
-
-
     public Sindico saveSindico(Sindico sindico) {
         return sindicoRepository.save(sindico);
     }
 
-    public List<Sindico> findSindico(String cidade, String nome) {
-        if (cidade != null) {
-            return findSindicosPorCidade(cidade);
-        }
+    public List<Sindico> findSindico(String nome) {
         if (nome != null) {
-            return findSindicoPorNome(nome);
+            return sindicoRepository.findByNomeCompletoIgnoreCaseContainingOrCidade_NomeIgnoreCaseContaining(nome, nome);
         }
         return findAllSindicos();
     }
-    public List<Sindico> findSindicosPorCidade(String cidade) {
-        return sindicoRepository.findByCidade_Nome(cidade);
+
+    public Sindico findSindicoById(Long id) {
+        return sindicoRepository.findById(id).orElse(null);
     }
-    public List<Sindico> findSindicoPorNome(String nome){
-        return sindicoRepository.findByNomeCompletoContaining(nome);
-    }
+
     public List<Sindico> findAllSindicos() {
         return sindicoRepository.findAll();
-    }
-    public List<ProcessoJuridico> findAllProcessoPorSindico(Long sindicoId) {
-        return processoJuridicoRepository.findBySindico_Id(sindicoId);
-    }
-
-    public List <HistoricoEducacao> findAllHistoricoEducacaoPorSindico(Long sindicoId){
-        return historicoEducacaoRepository.findBySindico_Id(sindicoId);
-    }
-
-    public List <HistoricoProfissional> findAllHistoricoProfissionalPorSindico(Long sindicoId){
-        return historicoProfissionalRepository.findBySindico_Id(sindicoId);
-    }
-    public List <Avaliacao> findAllAvaliacaoPorSindico(Long sindicoId){
-        return avaliacaoRepository.findBySindico_Id(sindicoId);
-
-    }
-   public List<Avaliacao> findAll(){
-        return  avaliacaoRepository.findAll();
-   }
-
-    public Contatos findByContatosPorSindico(Long sindicId){
-        Optional<Contatos> contatos = contatosRepository.findBySindico_Id(sindicId);
-        return contatos.orElse(null);
     }
 
     public BigDecimal mediaAvaliacaoSindico(Long sindicoId) {
         return avaliacaoRepository.mediaAvaliacaoSindico(sindicoId);
     }
-    public Avaliacao saveFormAvaliacao(Avaliacao avaliacao){
-//        Optional<Sindico> sindico = sindicoRepository.findById(avaliacao.getSindico_id());
-//        if (sindico.isPresent()) {
-//            Avaliacao av = new Avaliacao();
-//            av.setSindico(sindico.get());
-//            av.setClassificacao(avaliacao.getClassificacao());
-//            av.setTitulo(avaliacao.getTitulo());
-//            av.setComentario(avaliacao.getComentario());
-//            return avaliacaoRepository.save(av);
-//        }
-        return avaliacaoRepository.save(avaliacao);
+
+    public Avaliacao saveFormAvaliacao(AvaliacaoDTO avaliacao){
+        Optional<Sindico> sindico = sindicoRepository.findById(avaliacao.getSindico_id());
+        if (sindico.isPresent()) {
+            Avaliacao av = new Avaliacao();
+            av.setSindico(sindico.get());
+            av.setClassificacao(avaliacao.getClassificacao());
+            av.setTitulo(avaliacao.getTitulo());
+            av.setComentario(avaliacao.getComentario());
+            return avaliacaoRepository.save(av);
+        }
+        return null;
+//        return avaliacaoRepository.save(avaliacao);
     }
-
-
 }

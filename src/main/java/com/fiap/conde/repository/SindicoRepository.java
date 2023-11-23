@@ -10,5 +10,6 @@ import java.util.List;
 public interface SindicoRepository extends JpaRepository<Sindico, Long> {
     List<Sindico> findByCidade_Nome(String cidade);
     List<Sindico> findByNomeCompletoContaining(String nome);
+    List<Sindico> findByNomeCompletoIgnoreCaseContainingOrCidade_NomeIgnoreCaseContaining(String nome, String cidadeNome);
 
 }

@@ -12,9 +12,9 @@ CREATE TABLE sindico (
 -- Inserindo dados na tabela "sindico"
 --
 INSERT INTO sindico (nome_completo, resumo, classificacao, cidade_id) VALUES
-('Manoela Silva', 'sindica profissional a 10 anos', 4.5, 20),
-('Tiago Fernandes', 'sindico profissional a 1 anos', 4.8, 21),
-('Marcos Julio', 'sindico profissional a 3,5 anos', 4.2, 21);
+('Manoela Silva', 'sindica profissional a 10 anos', 4.5, 5277),
+('Tiago Fernandes', 'sindico profissional a 1 anos', 4.8, 5270),
+('Marcos Julio', 'sindico profissional a 3,5 anos', 4.2, 256);
 
 
 -- Estrutura da tabela "historico_profissional"
@@ -30,6 +30,10 @@ CREATE TABLE historico_profissional (
 -- Inserindo dados na tabela "historico_profissional"
 --
 INSERT INTO historico_profissional (condominio, duracao,  sindico_id) VALUES
+('Síndica Profissional no Residencial Flores','(2020-Atual)', 1),
+('Síndica Profissional no Happy Tarumã','(2021-Atual)', 1),
+('Síndica Profissional no Morada Tranquila 2 Etapa','(2017-2020)', 2),
+('Síndica Profissional no Morada Tranquila 3 Etapa','(2017-2020)', 2),
 ('Síndica Profissional no Reserva Inglesa','(2020-Atual)', 3),
 ('Síndica Profissional no Reserva das Praias','(2021-Atual)', 3),
 ('Síndica Profissional no Morada Tranquila','(2017-2020)', 3);
@@ -49,10 +53,13 @@ CREATE TABLE historico_educacao (
 -- Inserindo dados na tabela "historico_educacao"
 --
 INSERT INTO historico_educacao (curso, instituicao,duracao,  sindico_id) VALUES
+('Graduação em Gestão de Pessoas e Processos ','UFAM','(2010-2013)', 1),
+('Curso de formação de Síndico Profissisonal','UNI-SECOVI','(2017-2020)', 1),
+('Graduação em Gestão de Pessoas e Processos ','UFAM','(2010-2013)', 2),
+('Curso de formação de Síndico Profissisonal','UNI-SECOVI','(2017-2020)', 2),
 ('Graduação em Gestão de Pessoas e Processos ','UFAM','(2010-2013)', 3),
 ('Curso de formação de Síndico Profissisonal','UNI-SECOVI','(2017-2020)', 3),
 ('MBA em Gestão de Recursos','UNIP','(2014-2016)', 3);
-
 
 -- Estrutura da tabela "contatos"
 DROP TABLE IF EXISTS contatos;
@@ -68,8 +75,10 @@ CREATE TABLE contatos (
 --
 -- Inserindo dados na tabela "contatos"
 --
-INSERT INTO contatos (id, linkedin, instagram,gmail, telefone, sindico_id) VALUES
-(1, 'https://www.linkedin.com/mariaLisna-2621b4164/ ','@MariaLisna24','MariaLisna23@gmail.com','(92)991491768', 3);
+INSERT INTO contatos (linkedin, instagram,gmail, telefone, sindico_id) VALUES
+('https://www.linkedin.com/manoelaSilva-99820123/ ','@ManoelaSil_66','manoela_silva@gmail.com','(92) 99182-2322', 1),
+('https://www.linkedin.com/tiagoFernandes-23s30192/ ','@TiagoFern','tiago_fernandes@gmail.com','(92) 98822-4542', 2),
+('https://www.linkedin.com/mariaLisna-2621b4164/ ','@MariaLisna24','MariaLisna23@gmail.com','(92) 99149-1768', 3);
 
 
 -- Estrutura da tabela "avaliacao"
@@ -86,10 +95,8 @@ CREATE TABLE avaliacao (
 -- Inserindo dados na tabela "avaliacao"
 --
 INSERT INTO avaliacao (titulo, comentario,classificacao, sindico_id) VALUES
-('Uma pessoa tranquila ','“Uma pessoa calma e que sabe colocar as coisas em ordem”',5.0, 3),
-('Sob pressão ','“Uma pessoa que trabalha bem sob pressão, realizou diversos projetos sucedidos no cond”',4.5, 3),
-('Uma pessoa tranquila ','“Uma pessoa calma e que sabe colocar as coisas em ordem”',3.8, 3),
-('Sob pressão ','“Uma pessoa que trabalha bem sob pressão, realizou diversos projetos sucedidos no cond”',4.3, 3);
+('Uma pessoa tranquila','Uma pessoa calma e que sabe colocar as coisas em ordem', 5.0, 1),
+('Sob pressão','Uma pessoa que trabalha bem sob pressão, realizou diversos projetos sucedidos no cond', 4.5, 1);
 
 
 -- Estrutura da tabela "processo_juridico"
@@ -104,7 +111,9 @@ CREATE TABLE processo_juridico (
 -- Inserindo dados na tabela "processo_juridico"
 --
 INSERT INTO processo_juridico (comentario,  sindico_id) VALUES
-('sem nenhum processo juridico', 3);
+('Sem nenhum processo jurídico', 1),
+('Sem nenhum processo jurídico', 2),
+('Sem nenhum processo jurídico', 3);
 
 
 -- Estrutura da tabela "estado"
@@ -161,13 +170,13 @@ DROP TABLE IF EXISTS cidade;
 CREATE TABLE cidade (
   id int NOT NULL,
   nome varchar(120) DEFAULT NULL,
-  uf int DEFAULT NULL,
+  estado int DEFAULT NULL,
   ibge int DEFAULT NULL
 );
 --
 -- Inserindo dados na tabela "cidade"
 --
-INSERT INTO cidade (id, nome, uf, ibge) VALUES
+INSERT INTO cidade (id, nome, estado, ibge) VALUES
 (1, 'Afonso Cláudio', 8, 3200102),
 (2, 'Água Doce do Norte', 8, 3200169),
 (3, 'Águia Branca', 8, 3200136),
@@ -1685,7 +1694,7 @@ INSERT INTO cidade (id, nome, uf, ibge) VALUES
 (1517, 'Douradina', 12, 5003504),
 (1518, 'Dourados', 12, 5003702),
 (1519, 'Eldorado', 12, 5003751);
-INSERT INTO cidade (id, nome, uf, ibge) VALUES
+INSERT INTO cidade (id, nome, estado, ibge) VALUES
 (1520, 'Fátima do Sul', 12, 5003801),
 (1521, 'Figueirão', 12, 5003900),
 (1522, 'Glória de Dourados', 12, 5004007),
@@ -3127,7 +3136,7 @@ INSERT INTO cidade (id, nome, uf, ibge) VALUES
 (2959, 'Jardim Alegre', 18, 4112504),
 (2960, 'Jardim Olinda', 18, 4112603),
 (2961, 'Jataizinho', 18, 4112702);
-INSERT INTO cidade (id, nome, uf, ibge) VALUES
+INSERT INTO cidade (id, nome, estado, ibge) VALUES
 (2962, 'Jesuítas', 18, 4112751),
 (2963, 'Joaquim Távora', 18, 4112801),
 (2964, 'Jundiaí do Sul', 18, 4112900),
@@ -4546,7 +4555,7 @@ INSERT INTO cidade (id, nome, uf, ibge) VALUES
 (4378, 'Ouro Preto do Oeste', 21, 1100155),
 (4379, 'Parecis', 21, 1101450),
 (4380, 'Pimenta Bueno', 21, 1100189);
-INSERT INTO cidade (id, nome, uf, ibge) VALUES
+INSERT INTO cidade (id, nome, estado, ibge) VALUES
 (4381, 'Pimenteiras do Oeste', 21, 1101468),
 (4382, 'Porto Velho', 21, 1100205),
 (4383, 'Presidente Médici', 21, 1100254),

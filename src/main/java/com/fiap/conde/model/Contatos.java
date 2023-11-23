@@ -11,7 +11,8 @@ import lombok.Setter;
 @Setter
 public class Contatos {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
     private String linkedin;
 

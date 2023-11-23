@@ -16,13 +16,14 @@ public class Estado {
     @Id
     @JsonIgnore
     private Long id;
+    @JsonIgnore
     private String nome;
     private String uf;
     @JsonIgnore
     private int ibge;
     @JsonIgnore
     private String ddd;
-    @OneToMany(mappedBy = "uf")
+    @OneToMany(mappedBy = "estado")
     @JsonIgnore
     private List<Cidade> cidades;
 }

@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface CidadeRepository extends JpaRepository<Cidade, Long> {
-    List<Cidade> findByUf_Uf(String uf);
+    List<Cidade> findByEstado_Uf(String uf);
 }

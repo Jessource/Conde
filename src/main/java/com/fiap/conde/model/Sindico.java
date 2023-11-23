@@ -1,6 +1,7 @@
 package com.fiap.conde.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,23 +25,22 @@ public class Sindico {
     private Cidade cidade;
 
     @OneToMany(mappedBy = "sindico")
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private List<ProcessoJuridico> processo;
 
     @OneToMany(mappedBy = "sindico")
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private List<HistoricoProfissional> profissional;
 
     @OneToMany(mappedBy = "sindico")
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private List<HistoricoEducacao> educacao;
 
     @OneToOne(mappedBy = "sindico")
-    @JsonIgnore
     private Contatos contatos;
 
     @OneToMany(mappedBy = "sindico")
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private List<Avaliacao> avaliacao;
 
 }

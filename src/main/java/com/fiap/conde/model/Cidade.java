@@ -13,13 +13,13 @@ import java.util.List;
 @Setter
 public class Cidade {
     @Id
+    @JsonIgnore
     private Long id;
     private String nome;
 
     @ManyToOne
-    @JoinColumn(name="uf")
-    @JsonIgnore
-    private Estado uf;
+    @JoinColumn(name="estado")
+    private Estado estado;
     @JsonIgnore
     private int ibge;
 

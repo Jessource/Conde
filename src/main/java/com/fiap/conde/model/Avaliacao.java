@@ -13,6 +13,7 @@ import lombok.Setter;
 public class Avaliacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
     private String titulo;
 

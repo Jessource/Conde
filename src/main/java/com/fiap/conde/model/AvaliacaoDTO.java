@@ -3,8 +3,7 @@ package com.fiap.conde.model;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 public class AvaliacaoDTO {
     private String titulo;
     private String comentario;

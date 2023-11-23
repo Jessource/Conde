@@ -19,7 +19,7 @@ public class LocalidadeService {
 
 
     public List<Cidade> findCidadesPorUf(String uf) {
-        return cidadeRepository.findByUf_Uf(uf);
+        return cidadeRepository.findByEstado_Uf(uf);
     }
 
     public List<Estado> findAllEstados() {
